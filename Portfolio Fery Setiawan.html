@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fery Setiawan - Portfolio IT Support & Network Specialist</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            orange: '#F97316', // Tailwind orange-500
+                            orangeHover: '#EA580C', // Tailwind orange-600
+                            blue: '#2563EB', // Tailwind blue-600
+                            blueHover: '#1D4ED8', // Tailwind blue-700
+                            darkBlue: '#0F172A', // Slate 900
+                            lightBg: '#F8FAFC', // Slate 50
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- Google Fonts Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome Icons CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom subtle glassmorphism & gradients */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+            background-size: 24px 24px;
+        }
+        .orange-blue-gradient {
+            background: linear-gradient(135deg, #2563EB 0%, #F97316 100%);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- Navigation Bar -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-md border-b border-slate-200/80 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                <!-- Logo -->
+                <a href="#hero" class="flex items-center gap-2 group">
+                    <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 to-orange-500 flex items-center justify-center text-white font-bold text-xl shadow-md group-hover:scale-105 transition-transform">
+                        FS
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-extrabold text-lg text-slate-900 tracking-tight leading-none">Fery Setiawan</span>
+                        <span class="text-xs font-semibold text-orange-500 tracking-wider uppercase mt-1">IT Support & Tech</span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation Menu -->
+                <nav class="hidden md:flex items-center gap-8">
+                    <a href="#hero" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Beranda</a>
+                    <a href="#about" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Tentang Saya</a>
+                    <a href="#experience" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Pengalaman</a>
+                    <a href="#projects" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Proyek</a>
+                    <a href="#skills" class="text-sm font-medium text-slate-600 hover:text-blue-600 transition-colors">Keahlian</a>
+                    <a href="#contact" class="px-5 py-2.5 rounded-full text-sm font-semibold text-white bg-blue-600 hover:bg-blue-700 shadow-md hover:shadow-lg transition-all flex items-center gap-2">
+                        <i class="fa-solid fa-paper-plane text-xs"></i> Hubungi Saya
+                    </a>
+                </nav>
+
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" type="button" class="p-2.5 rounded-lg text-slate-600 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Navigation">
+                        <i id="menu-icon-open" class="fa-solid fa-bars text-xl"></i>
+                        <i id="menu-icon-close" class="fa-solid fa-xmark text-xl hidden"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Menu Dropdown -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
+            <a href="#hero" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Beranda</a>
+            <a href="#about" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Tentang Saya</a>
+            <a href="#experience" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Pengalaman</a>
+            <a href="#projects" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Proyek</a>
+            <a href="#skills" class="mobile-nav-link block px-3 py-2 rounded-md text-base font-medium text-slate-700 hover:bg-slate-50 hover:text-blue-600">Keahlian</a>
+            <a href="#contact" class="mobile-nav-link block w-full text-center mt-2 px-4 py-2.5 rounded-lg text-base font-medium text-white bg-orange-500 hover:bg-orange-600">
+                Hubungi Saya
+            </a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="hero" class="relative pt-32 pb-20 md:pt-40 md:pb-28 bg-grid-pattern overflow-hidden">
+        <!-- Accent Glow Blobs -->
+        <div class="absolute top-10 left-1/2 -translate-x-1/2 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute top-40 right-10 w-80 h-80 bg-orange-400/20 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-12 gap-12 items-center">
+                
+                <!-- Left Hero Content -->
+                <div class="md:col-span-7 space-y-6 text-center md:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-blue-700 text-xs sm:text-sm font-semibold tracking-wide">
+                        <span class="w-2 h-2 rounded-full bg-orange-500 animate-ping"></span>
+                        <i class="fa-solid fa-laptop-code text-orange-500"></i> Fresh Graduate TJKT & IT Support
+                    </div>
+                    
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-tight">
+                        Halo, Saya <span class="text-blue-600">Fery Setiawan</span>
+                    </h1>
+
+                    <!-- Required Quote / Tagline -->
+                    <div class="p-4 sm:p-5 rounded-2xl bg-white/80 border-l-4 border-orange-500 shadow-sm backdrop-blur">
+                        <p class="text-base sm:text-lg md:text-xl font-medium italic text-slate-700">
+                            &ldquo;Berkarya dengan Dedikasi, Bertumbuh dengan Inovasi&rdquo;
+                        </p>
+                    </div>
+
+                    <p class="text-slate-600 text-base sm:text-lg max-w-2xl leading-relaxed">
+                        Lulusan Teknik Komputer & Jaringan berpengalaman dalam instalasi jaringan LAN, troubleshooting hardware/software, serta pemeliharaan infrastruktur IT operasional.
+                    </p>
+
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-col sm:flex-row items-center justify-center md:justify-start gap-4 pt-2">
+                        <a href="#contact" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-white bg-orange-500 hover:bg-orange-600 shadow-lg shadow-orange-500/25 hover:shadow-orange-500/40 hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-envelope"></i> Diskusi Kerja Sama
+                        </a>
+                        <a href="#experience" class="w-full sm:w-auto px-7 py-3.5 rounded-xl font-semibold text-slate-700 bg-white hover:bg-slate-100 border border-slate-300 shadow-sm hover:-translate-y-0.5 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-briefcase text-blue-600"></i> Lihat Pengalaman
+                        </a>
+                        <button onclick="openCvModal()" class="w-full sm:w-auto px-5 py-3.5 rounded-xl font-semibold text-blue-600 bg-blue-50 hover:bg-blue-100 border border-blue-200 transition-all text-center flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-file-pdf"></i> Lihat CV
+                        </button>
+                    </div>
+
+                    <!-- Location & Status Badge -->
+                    <div class="pt-4 flex flex-wrap justify-center md:justify-start items-center gap-6 text-sm text-slate-500">
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-location-dot text-orange-500"></i> Cirebon, Jawa Barat
+                        </div>
+                        <div class="flex items-center gap-2">
+                            <i class="fa-solid fa-circle-check text-emerald-500"></i> Siap Bekerja & Berkontribusi
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Hero Visual Card -->
+                <div class="md:col-span-5 flex justify-center">
+                    <div class="relative w-full max-w-md">
+                        <!-- Background Glow behind Card -->
+                        <div class="absolute -inset-1 bg-gradient-to-r from-blue-600 to-orange-500 rounded-3xl blur opacity-30 group-hover:opacity-100 transition duration-1000"></div>
+                        
+                        <div class="relative bg-white p-6 sm:p-8 rounded-3xl shadow-xl border border-slate-100 space-y-6">
+                            <!-- Avatar / Illustration Header -->
+                            <div class="flex items-center gap-4">
+                                <div class="w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500 to-orange-500 p-1 shadow-md">
+                                    <div class="w-full h-full bg-slate-900 rounded-[14px] flex items-center justify-center text-white text-3xl font-bold">
+                                        <i class="fa-solid fa-user-gear"></i>
+                                    </div>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-slate-900">Fery Setiawan</h3>
+                                    <p class="text-sm font-medium text-orange-600">IT Support Technician</p>
+                                    <p class="text-xs text-slate-500 mt-0.5">SMK Ulil Albab Cirebon</p>
+                                </div>
+                            </div>
+
+                            <hr class="border-slate-100">
+
+                            <!-- Highlight Stat Grid -->
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                                    <span class="block text-2xl font-black text-blue-600">4 Bulan</span>
+                                    <span class="text-xs text-slate-500 font-medium">Pengalaman PKL KAI</span>
+                                </div>
+                                <div class="p-3.5 rounded-2xl bg-slate-50 border border-slate-100 text-center">
+                                    <span class="block text-2xl font-black text-orange-500">100%</span>
+                                    <span class="text-xs text-slate-500 font-medium">Komitmen & Teliti</span>
+                                </div>
+                            </div>
+
+                            <!-- Tech Highlights -->
+                            <div class="space-y-2">
+                                <span class="text-xs font-bold text-slate-400 uppercase tracking-wider">Keahlian Utama</span>
+                                <div class="flex flex-wrap gap-2">
+                                    <span class="px-3 py-1 rounded-lg bg-blue-50 text-blue-700 text-xs font-semibold">Troubleshooting LAN</span>
+                                    <span class="px-3 py-1 rounded-lg bg-orange-50 text-orange-700 text-xs font-semibold">Crimping RJ45</span>
+                                    <span class="px-3 py-1 rounded-lg bg-slate-100 text-slate-700 text-xs font-semibold">Hardware Care</span>
+                                    <span class="px-3 py-1 rounded-lg bg-emerald-50 text-emerald-700 text-xs font-semibold">Microsoft Office</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Me Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-orange-500 uppercase tracking-widest mb-2">Profil Singkat</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Tentang Saya</h3>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-orange-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-10 items-center">
+                <!-- Left Description -->
+                <div class="lg:col-span-7 space-y-6">
+                    <h4 class="text-2xl font-bold text-slate-900">
+                        Dedikasi Tinggi di Bidang Teknologi Informasi & Jaringan Komputer
+                    </h4>
+                    <p class="text-slate-600 leading-relaxed text-base sm:text-lg">
+                        Saya adalah lulusan **SMK Ulil Albab** jurusan **Teknik Jaringan Komputer & Telekomunikasi (2023-2026)** yang berdomisili di Cirebon, Jawa Barat. Memiliki minat yang mendalam pada dunia IT, infrastruktur jaringan, serta penanganan masalah teknis perangkat keras dan lunak.
+                    </p>
+                    <p class="text-slate-600 leading-relaxed text-base">
+                        Berpengalaman menjalani **Praktik Kerja Lapangan (PKL) selama 4 bulan** di divisi **IT Support PT. Kereta Api Indonesia (Persero) DAOP 3 Cirebon**. Selama masa kerja praktek, saya terbiasa melakukan pemeliharaan rutin, instalasi jaringan lokal (LAN), crimping kabel, hingga diagnosa kendala konektivitas pengguna operasional secara terstruktur dan terorganisir.
+                    </p>
+
+                    <!-- Feature Pillars Grid -->
+                    <div class="grid sm:grid-cols-2 gap-4 pt-4">
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 text-lg">
+                                <i class="fa-solid fa-network-wired"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Kemampuan Teknis</h5>
+                                <p class="text-xs text-slate-500 mt-1">Menguasai dasar jaringan, crimping cable, instalasi & troubleshooting hardware/software.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 text-lg">
+                                <i class="fa-solid fa-clipboard-check"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Kerja Rapi & Teliti</h5>
+                                <p class="text-xs text-slate-500 mt-1">Sangat memperhatikan kerapihan pengabelan, dokumentasi administrasi, dan standar K3LH.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-lg">
+                                <i class="fa-solid fa-users"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Komunikasi & Tim</h5>
+                                <p class="text-xs text-slate-500 mt-1">Mampu berkolaborasi aktif dalam tim maupun bekerja mandiri secara efektif.</p>
+                            </div>
+                        </div>
+
+                        <div class="p-4 rounded-xl bg-slate-50 border border-slate-200/80 flex items-start gap-3">
+                            <div class="w-10 h-10 rounded-lg bg-indigo-100 text-indigo-600 flex items-center justify-center shrink-0 text-lg">
+                                <i class="fa-solid fa-palette"></i>
+                            </div>
+                            <div>
+                                <h5 class="font-bold text-slate-900 text-sm">Visualisasi & Desain</h5>
+                                <p class="text-xs text-slate-500 mt-1">Memiliki keahlian dasar menggambar dan visualisasi desain kreatif.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Education Card & Details -->
+                <div class="lg:col-span-5">
+                    <div class="bg-gradient-to-br from-slate-900 to-slate-800 text-white rounded-3xl p-6 sm:p-8 shadow-xl relative overflow-hidden">
+                        <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-orange-500/10 rounded-full blur-2xl"></div>
+                        <h4 class="text-xl font-bold border-b border-slate-700 pb-4 mb-6 flex items-center gap-3">
+                            <i class="fa-solid fa-graduation-cap text-orange-400"></i> Pendidikan Resmi
+                        </h4>
+
+                        <div class="space-y-6">
+                            <div class="relative pl-6 border-l-2 border-blue-500">
+                                <span class="absolute -left-[7px] top-1.5 w-3 h-3 rounded-full bg-blue-500"></span>
+                                <span class="text-xs font-semibold px-2.5 py-0.5 rounded bg-blue-500/20 text-blue-300">2023 - 2026</span>
+                                <h5 class="text-lg font-bold text-white mt-1">SMK Ulil Albab</h5>
+                                <p class="text-sm font-medium text-orange-400">Teknik Jaringan Komputer & Telekomunikasi</p>
+                                <ul class="mt-3 text-xs text-slate-300 space-y-1.5 list-disc list-inside">
+                                    <li>Pengalaman PKL 4 bulan sebagai IT Support PT. KAI DAOP 3 Cirebon.</li>
+                                    <li>Menguasai dasar Teknik Komputer & Keamanan Jaringan.</li>
+                                    <li>Memahami prinsip Keselamatan & Kesehatan Kerja (K3LH).</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Certification Badge Box inside Education -->
+                        <div class="mt-8 pt-6 border-t border-slate-700/80">
+                            <h5 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Sertifikasi Keahlian</h5>
+                            <div class="space-y-2">
+                                <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                                    <span class="flex items-center gap-2 font-medium"><i class="fa-solid fa-certificate text-orange-400"></i> Certificate UKK TKJ</span>
+                                    <span class="text-slate-400">2026</span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs p-2.5 rounded-xl bg-slate-800/80 border border-slate-700">
+                                    <span class="flex items-center gap-2 font-medium"><i class="fa-solid fa-certificate text-blue-400"></i> Certificate PKL IT Support KAI</span>
+                                    <span class="text-slate-400">2025</span>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="py-20 bg-slate-100/70 border-y border-slate-200/60">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Jejak Langkah</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Pengalaman Kerja Lapangan</h3>
+                <p class="text-slate-600 mt-3 text-base">Praktik riil di lingkungan BUMN sektor transportasi perkeretaapian.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-orange-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Single Featured Experience Card -->
+            <div class="max-w-4xl mx-auto bg-white rounded-3xl p-6 sm:p-10 shadow-lg border border-slate-200/80 hover:shadow-xl transition-shadow">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-100 pb-6 mb-6">
+                    <div class="flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-500 text-white flex items-center justify-center text-2xl font-bold shadow-md shadow-orange-500/20">
+                            <i class="fa-solid fa-train"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-xl sm:text-2xl font-bold text-slate-900">IT Support Intern</h4>
+                            <p class="text-base font-semibold text-blue-600">PT Kereta Api Indonesia (Persero) DAOP 3 Cirebon</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="px-4 py-1.5 rounded-full bg-orange-100 text-orange-700 font-semibold text-xs sm:text-sm">
+                            <i class="fa-regular fa-calendar-check mr-1.5"></i> Tahun 2025 (4 Bulan)
+                        </span>
+                    </div>
+                </div>
+
+                <h5 class="font-bold text-slate-900 mb-4 text-base">Tanggung Jawab & Kontribusi Utama:</h5>
+                <div class="grid sm:grid-cols-2 gap-4">
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center shrink-0 text-sm mt-0.5">
+                            <i class="fa-solid fa-wifi"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Melakukan pengecekan rutin dan **troubleshooting koneksi internet serta jaringan LAN** untuk kelancaran operasional.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0 text-sm mt-0.5">
+                            <i class="fa-solid fa-screwdrivers"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Membantu pemeliharaan **hardware PC/komputer dan software** guna mencegah kekacauan sistem kerja.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 text-sm mt-0.5">
+                            <i class="fa-solid fa-ethernet"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Melakukan **crimping kabel LAN RJ45** sesuai standar pengabelan untuk kebutuhan jaringan internal gedung.
+                        </p>
+                    </div>
+
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-100 flex items-start gap-3">
+                        <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center shrink-0 text-sm mt-0.5">
+                            <i class="fa-solid fa-gears"></i>
+                        </div>
+                        <p class="text-sm text-slate-700 leading-relaxed">
+                            Membantu proses **instalasi dan konfigurasi dasar perangkat jaringan** pendukung operasional kantor DAOP 3.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-orange-500 uppercase tracking-widest mb-2">Portofolio Kerja</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Proyek & Praktik Teknis</h3>
+                <p class="text-slate-600 mt-3 text-base">Dokumentasi hasil karya teknis selama sekolah dan praktik lapangan.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-orange-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Projects Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Project Card 1 -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-tr from-blue-600 to-blue-800 p-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <i class="fa-solid fa-network-wired text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-white text-xs font-semibold">Jaringan LAN</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Pengabelan & Crimping LAN RJ45
+                            </h4>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                Pembuatan kabel UTP/STP straight dan crossover menggunakan konektor RJ45 lengkap dengan pengujian kelayakan alur transmisi data via LAN Cable Tester.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-200 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-xs font-medium">RJ45</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-700 text-xs font-medium">LAN Tester</span>
+                            <span class="px-2.5 py-1 rounded-md bg-orange-100 text-orange-800 text-xs font-medium">KAI DAOP 3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 2 -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-tr from-orange-500 to-amber-600 p-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <i class="fa-solid fa-laptop-medical text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-white text-xs font-semibold">Maintenance</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-orange-600 transition-colors">
+                                Hardware PC Care & Troubleshooting
+                            </h4>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                Perakitan komputer, diagnostik masalah booting, pembersihan fisik unit PC kerja, pergantian pasta thermal CPU, serta instalasi ulang sistem operasi Windows.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-200 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-orange-100 text-orange-800 text-xs font-medium">PC Hardware</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-700 text-xs font-medium">Windows OS</span>
+                            <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-xs font-medium">Diagnostics</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Card 3 -->
+                <div class="group bg-slate-50 rounded-3xl overflow-hidden border border-slate-200/80 hover:shadow-xl transition-all duration-300 flex flex-col">
+                    <div class="h-48 bg-gradient-to-tr from-slate-800 to-slate-900 p-6 flex items-center justify-center relative overflow-hidden">
+                        <div class="absolute inset-0 bg-grid-pattern opacity-10"></div>
+                        <i class="fa-solid fa-sliders text-white/90 text-6xl group-hover:scale-110 transition-transform duration-300"></i>
+                        <span class="absolute top-4 right-4 px-3 py-1 rounded-full bg-white/20 backdrop-blur text-white text-xs font-semibold">Konfigurasi</span>
+                    </div>
+                    <div class="p-6 flex-1 flex flex-col justify-between space-y-4">
+                        <div>
+                            <h4 class="text-xl font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+                                Setup Router & Switch Lokal
+                            </h4>
+                            <p class="text-slate-600 text-sm mt-2 leading-relaxed">
+                                Pengaturan dasar IP Addressing, DHCP Server, penamaan SSID Access Point, dan konfigurasi port switch untuk mendistribusikan koneksi internet internal.
+                            </p>
+                        </div>
+                        <div class="pt-4 border-t border-slate-200 flex flex-wrap gap-2">
+                            <span class="px-2.5 py-1 rounded-md bg-blue-100 text-blue-800 text-xs font-medium">IP Addressing</span>
+                            <span class="px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 text-xs font-medium">Access Point</span>
+                            <span class="px-2.5 py-1 rounded-md bg-slate-200 text-slate-700 text-xs font-medium">UKK TKJ</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Background Accents -->
+        <div class="absolute -top-24 -left-24 w-96 h-96 bg-blue-600/20 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-24 -right-24 w-96 h-96 bg-orange-500/20 rounded-full blur-3xl"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-orange-400 uppercase tracking-widest mb-2">Kompetensi Saya</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">Keahlian & Kemampuan</h3>
+                <p class="text-slate-400 mt-3 text-base">Perpaduan antara keahlian teknis jaringan IT dan kemampuan soft skills profesional.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-500 to-orange-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <!-- Skills Categories -->
+            <div class="space-y-12">
+                
+                <!-- Category 1: Jaringan & IT Support -->
+                <div>
+                    <h4 class="text-lg font-bold text-orange-400 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-network-wired"></i> Jaringan Komputer & IT Support
+                    </h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-blue-500/50 flex items-center gap-3 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                            <span class="text-sm font-semibold text-slate-200">Troubleshooting Jaringan LAN</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-orange-500/50 flex items-center gap-3 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                            <span class="text-sm font-semibold text-slate-200">Crimping Kabel LAN (RJ45)</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-blue-500/50 flex items-center gap-3 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                            <span class="text-sm font-semibold text-slate-200">Instalasi Hardware & Software</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-orange-500/50 flex items-center gap-3 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span>
+                            <span class="text-sm font-semibold text-slate-200">Pemeliharaan Perangkat PC</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-blue-500/50 flex items-center gap-3 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-blue-500"></span>
+                            <span class="text-sm font-semibold text-slate-200">Dasar Keamanan Jaringan</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-emerald-500/50 flex items-center gap-3 transition-all">
+                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+                            <span class="text-sm font-semibold text-slate-200">Prinsip K3LH Teknis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 2: Software & Administrasi -->
+                <div>
+                    <h4 class="text-lg font-bold text-blue-400 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-desktop"></i> Software & Dokumentasi
+                    </h4>
+                    <div class="flex flex-wrap gap-3">
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-blue-500/50 flex items-center gap-3 transition-all">
+                            <i class="fa-solid fa-file-word text-blue-400"></i>
+                            <span class="text-sm font-semibold text-slate-200">Microsoft Word</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-emerald-500/50 flex items-center gap-3 transition-all">
+                            <i class="fa-solid fa-file-excel text-emerald-400"></i>
+                            <span class="text-sm font-semibold text-slate-200">Microsoft Excel</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-orange-500/50 flex items-center gap-3 transition-all">
+                            <i class="fa-solid fa-file-powerpoint text-orange-400"></i>
+                            <span class="text-sm font-semibold text-slate-200">Microsoft PowerPoint</span>
+                        </div>
+
+                        <div class="px-4 py-2.5 rounded-2xl bg-slate-800 border border-slate-700 hover:border-purple-500/50 flex items-center gap-3 transition-all">
+                            <i class="fa-solid fa-pen-nib text-purple-400"></i>
+                            <span class="text-sm font-semibold text-slate-200">Visualisasi Desain Grafis</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Category 3: Soft Skills -->
+                <div>
+                    <h4 class="text-lg font-bold text-emerald-400 mb-6 flex items-center gap-2">
+                        <i class="fa-solid fa-user-check"></i> Soft Skills & Karakter Work ethic
+                    </h4>
+                    <div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700 text-center">
+                            <i class="fa-solid fa-comments text-orange-400 text-2xl mb-2"></i>
+                            <h5 class="text-sm font-bold text-slate-200">Komunikasi Baik</h5>
+                            <p class="text-xs text-slate-400 mt-1">Interaksi ramah & efisien</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700 text-center">
+                            <i class="fa-solid fa-list-check text-blue-400 text-2xl mb-2"></i>
+                            <h5 class="text-sm font-bold text-slate-200">Teliti & Rapi</h5>
+                            <p class="text-xs text-slate-400 mt-1">Pekerjaan terorganisir</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700 text-center">
+                            <i class="fa-solid fa-people-group text-emerald-400 text-2xl mb-2"></i>
+                            <h5 class="text-sm font-bold text-slate-200">Kerja Tim</h5>
+                            <p class="text-xs text-slate-400 mt-1">Adaptif & kolaboratif</p>
+                        </div>
+
+                        <div class="p-4 rounded-2xl bg-slate-800/60 border border-slate-700 text-center">
+                            <i class="fa-solid fa-clock text-purple-400 text-2xl mb-2"></i>
+                            <h5 class="text-sm font-bold text-slate-200">Manajemen Waktu</h5>
+                            <p class="text-xs text-slate-400 mt-1">Disiplin dan tepat target</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-xs font-bold text-blue-600 uppercase tracking-widest mb-2">Kontak Langsung</h2>
+                <h3 class="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">Mari Terhubung & Bekerja Sama</h3>
+                <p class="text-slate-600 mt-3 text-base">Saya terbuka untuk kesempatan kerja di bidang IT Support, Network Support, atau posisi teknis terkait.</p>
+                <div class="w-16 h-1 bg-gradient-to-r from-blue-600 to-orange-500 mx-auto mt-4 rounded-full"></div>
+            </div>
+
+            <div class="grid lg:grid-cols-12 gap-10">
+                
+                <!-- Left: Contact Information Cards -->
+                <div class="lg:col-span-5 space-y-6">
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-md flex items-center gap-4 hover:border-orange-500 transition-colors">
+                        <div class="w-14 h-14 rounded-2xl bg-orange-100 text-orange-600 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div class="overflow-hidden">
+                            <h5 class="text-xs font-bold uppercase text-slate-400 tracking-wider">Email Utama</h5>
+                            <a href="mailto:fery0851173@gmail.com" class="text-base sm:text-lg font-bold text-slate-900 hover:text-orange-600 transition-colors block truncate">
+                                fery0851173@gmail.com
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-md flex items-center gap-4 hover:border-blue-600 transition-colors">
+                        <div class="w-14 h-14 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-brands fa-whatsapp"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold uppercase text-slate-400 tracking-wider">Telepon / WhatsApp</h5>
+                            <a href="https://wa.me/62895634717963" target="_blank" rel="noopener noreferrer" class="text-base sm:text-lg font-bold text-slate-900 hover:text-blue-600 transition-colors block">
+                                +62 895-6347-17963
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-3xl border border-slate-200/80 shadow-md flex items-center gap-4">
+                        <div class="w-14 h-14 rounded-2xl bg-slate-100 text-slate-700 flex items-center justify-center text-2xl shrink-0">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h5 class="text-xs font-bold uppercase text-slate-400 tracking-wider">Domisili</h5>
+                            <p class="text-base font-bold text-slate-900">
+                                Cirebon, Jawa Barat, Indonesia
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Quick Download CV Card -->
+                    <div class="p-6 rounded-3xl bg-gradient-to-tr from-blue-600 to-orange-500 text-white shadow-lg space-y-3">
+                        <h5 class="text-lg font-bold">Tertarik dengan Kualifikasi Saya?</h5>
+                        <p class="text-xs text-white/90 leading-relaxed">
+                            Unduh resume/CV lengkap Fery Setiawan dalam format ringkas untuk informasi kualifikasi mendalam.
+                        </p>
+                        <button onclick="openCvModal()" class="w-full py-2.5 rounded-xl bg-white text-slate-900 font-bold text-sm hover:bg-slate-100 transition-colors flex items-center justify-center gap-2">
+                            <i class="fa-solid fa-download text-orange-500"></i> Unduh / Pratinjau CV
+                        </button>
+                    </div>
+
+                </div>
+
+                <!-- Right: Interactive Contact Form -->
+                <div class="lg:col-span-7">
+                    <div class="bg-white p-6 sm:p-8 rounded-3xl border border-slate-200/80 shadow-lg">
+                        <h4 class="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                            <i class="fa-regular fa-paper-plane text-orange-500"></i> Kirim Pesan Langsung
+                        </h4>
+
+                        <!-- Custom Alert Toast (Hidden by default) -->
+                        <div id="form-alert" class="hidden mb-6 p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm flex items-center gap-3">
+                            <i class="fa-solid fa-circle-check text-emerald-600 text-lg"></i>
+                            <div>
+                                <span class="font-bold">Pesan Terkirim!</span> Terima kasih telah menghubungi saya. Saya akan membalas pesan Anda secepatnya.
+                            </div>
+                        </div>
+
+                        <form id="contact-form" onsubmit="handleFormSubmit(event)" class="space-y-4">
+                            <div class="grid sm:grid-cols-2 gap-4">
+                                <div>
+                                    <label for="name" class="block text-xs font-bold text-slate-700 uppercase mb-1">Nama Lengkap</label>
+                                    <input type="text" id="name" required placeholder="Contoh: Budi Santoso" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm">
+                                </div>
+                                <div>
+                                    <label for="email" class="block text-xs font-bold text-slate-700 uppercase mb-1">Alamat Email</label>
+                                    <input type="email" id="email" required placeholder="nama@perusahaan.com" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm">
+                                </div>
+                            </div>
+
+                            <div>
+                                <label for="subject" class="block text-xs font-bold text-slate-700 uppercase mb-1">Subjek Pesan</label>
+                                <input type="text" id="subject" required placeholder="Penawaran Kerja / Diskusi IT Support" class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm">
+                            </div>
+
+                            <div>
+                                <label for="message" class="block text-xs font-bold text-slate-700 uppercase mb-1">Pesan Anda</label>
+                                <textarea id="message" rows="4" required placeholder="Tuliskan detail pertanyaan atau tawaran pekerjaan di sini..." class="w-full px-4 py-3 rounded-xl border border-slate-300 focus:outline-none focus:ring-2 focus:ring-blue-600 focus:border-transparent text-sm"></textarea>
+                            </div>
+
+                            <button type="submit" id="submit-btn" class="w-full py-3.5 rounded-xl bg-orange-500 hover:bg-orange-600 text-white font-bold text-sm shadow-md transition-all flex items-center justify-center gap-2">
+                                <i class="fa-solid fa-paper-plane"></i> Kirim Pesan
+                            </button>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-slate-900 text-slate-400 py-10 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-6">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white font-bold text-sm">
+                    FS
+                </div>
+                <span class="text-sm font-semibold text-white">Fery Setiawan Portfolio</span>
+            </div>
+
+            <p class="text-xs text-center md:text-right text-slate-500">
+                &copy; <span id="year"></span> Fery Setiawan. Berkarya dengan Dedikasi, Bertumbuh dengan Inovasi.
+            </p>
+        </div>
+    </footer>
+
+    <!-- CV Preview Modal -->
+    <div id="cv-modal" class="fixed inset-0 z-50 bg-slate-900/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-2xl rounded-3xl shadow-2xl overflow-hidden border border-slate-100 flex flex-col max-h-[90vh]">
+            <div class="p-6 bg-slate-900 text-white flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                    <i class="fa-solid fa-file-pdf text-orange-500 text-2xl"></i>
+                    <div>
+                        <h4 class="font-bold text-lg">Curriculum Vitae - Fery Setiawan</h4>
+                        <p class="text-xs text-slate-400">Fresh Graduate Teknik Komputer & Jaringan</p>
+                    </div>
+                </div>
+                <button onclick="closeCvModal()" class="text-slate-400 hover:text-white text-xl p-2" aria-label="Close modal">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <div class="p-6 overflow-y-auto space-y-6 text-slate-700 text-sm">
+                <!-- Resume Summary inside Modal -->
+                <div class="border-b pb-4">
+                    <h5 class="font-bold text-slate-900 text-base mb-1">Informasi Kontak</h5>
+                    <p>📍 Cirebon, Jawa Barat | 📧 fery0851173@gmail.com | 📞 +62 895-6347-17963</p>
+                </div>
+
+                <div class="border-b pb-4">
+                    <h5 class="font-bold text-slate-900 text-base mb-1">Ringkasan Eksekutif</h5>
+                    <p class="text-xs leading-relaxed text-slate-600">
+                        Lulusan SMK Ulil Albab Teknik Komputer dan Jaringan dengan minat pada bidang IT dan jaringan komputer. Berpengalaman praktik kerja lapangan di divisi IT dengan kemampuan instalasi dan troubleshooting jaringan dasar. Memiliki kemampuan komunikasi yang baik dan mampu bekerja secara rapi serta terorganisir.
+                    </p>
+                </div>
+
+                <div class="border-b pb-4 space-y-2">
+                    <h5 class="font-bold text-slate-900 text-base">Pengalaman Kerja</h5>
+                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-200">
+                        <div class="flex justify-between font-bold text-slate-800 text-xs">
+                            <span>IT Support Intern — PT. Kereta Api DAOP 3 Cirebon</span>
+                            <span class="text-orange-600">2025</span>
+                        </div>
+                        <ul class="list-disc list-inside text-xs text-slate-600 mt-2 space-y-1">
+                            <li>Melakukan pengecekan dan troubleshooting koneksi internet & jaringan LAN.</li>
+                            <li>Membantu pemeliharaan hardware dan software komputer.</li>
+                            <li>Melakukan crimping kabel LAN untuk kebutuhan jaringan komputer.</li>
+                            <li>Membantu instalasi dan konfigurasi perangkat jaringan.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <h5 class="font-bold text-slate-900 text-base">Sertifikasi Resmi</h5>
+                    <ul class="text-xs text-slate-600 space-y-1">
+                        <li>✅ Sertifikat Uji Kompetensi Keahlian (UKK) Bidang Teknik Komputer dan Jaringan (2026)</li>
+                        <li>✅ Sertifikat Praktik Kerja Lapangan (PKL) PT Kereta Api DAOP 3 Cirebon (2025)</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="p-4 bg-slate-100 border-t flex justify-end gap-3">
+                <button onclick="closeCvModal()" class="px-4 py-2 rounded-xl bg-slate-200 text-slate-700 font-semibold text-xs hover:bg-slate-300 transition-colors">
+                    Tutup
+                </button>
+                <a href="mailto:fery0851173@gmail.com?subject=Permintaan%20Berkas%20CV%20Fery%20Setiawan" class="px-4 py-2 rounded-xl bg-orange-500 text-white font-semibold text-xs hover:bg-orange-600 transition-colors flex items-center gap-1.5">
+                    <i class="fa-solid fa-paper-plane"></i> Minta Berkas PDF
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Behaviors -->
+    <script>
+        // Set dynamic dynamic current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIconOpen = document.getElementById('menu-icon-open');
+        const menuIconClose = document.getElementById('menu-icon-close');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            const isHidden = mobileMenu.classList.contains('hidden');
+            if (isHidden) {
+                mobileMenu.classList.remove('hidden');
+                menuIconOpen.classList.add('hidden');
+                menuIconClose.classList.remove('hidden');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            }
+        });
+
+        // Close mobile menu when a nav link is clicked
+        document.querySelectorAll('.mobile-nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                menuIconOpen.classList.remove('hidden');
+                menuIconClose.classList.add('hidden');
+            });
+        });
+
+        // CV Modal Logic
+        function openCvModal() {
+            document.getElementById('cv-modal').classList.remove('hidden');
+        }
+
+        function closeCvModal() {
+            document.getElementById('cv-modal').classList.add('hidden');
+        }
+
+        // Contact Form Submission Handler (No alert used)
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const submitBtn = document.getElementById('submit-btn');
+            const alertBox = document.getElementById('form-alert');
+
+            // Simulate loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = `<i class="fa-solid fa-spinner animate-spin"></i> Mengirim...`;
+
+            setTimeout(() => {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = `<i class="fa-solid fa-paper-plane"></i> Kirim Pesan`;
+                alertBox.classList.remove('hidden');
+                document.getElementById('contact-form').reset();
+
+                // Smooth scroll to alert
+                alertBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+
+                // Auto hide alert after 6 seconds
+                setTimeout(() => {
+                    alertBox.classList.add('hidden');
+                }, 6000);
+            }, 1200);
+        }
+    </script>
+</body>
+</html>
